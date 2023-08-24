@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>웹캠 좌우 반전</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      async
+      src="https://docs.opencv.org/3.4.0/opencv.js"
+      onload="onOpenCvReady();"
+      type="text/javascript"
+    ></script>
+    <style>
+      body {
+        background-color: black;
+      }
+
+      .container {
+        padding: 40px;
+      }
+
+      #videoElement {
+        width: 800px;
+        height: 600px;
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scaleX(-1);
+      }
+
+      #title {
+        color: white;
+        font-family: "DM Serif Display", serif;
+        text-shadow: 1px 1px 0px rgba(220, 220, 220, 0.5);
+        letter-spacing: 4px;
+
+        position: fixed;
+        top: 20px;
+        left: 100px;
+      }
+
+      #captureButton {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        bottom: 20px;
+        left: calc(50% - 40px);
+        z-index: 999;
+      }
+      #captureButton:before {
+        content: "";
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background-color: #ccc;
+      }
+      #captureButton:active:before {
+        background-color: #ddd;
+      }
+      #captureButton:active {
+        transform: scale(0.95);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      #remainingCount {
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 10px;
+        font-weight: bold;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="title">Memorism</h1>
+      <div class="container">
+        <span id="remainingCount">남은 사진 촬영 횟수: 8회</span>
+        <div>
+          <video id="videoElement" width="640" height="480" autoplay></video>
+        </div>
+        <div>
+          <button id="captureButton"></button>
+        </div>
+        <div>
+          <h2>촬영한 사진 목록</h2>
+          <ul id="photoList"></ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      const videoElement = document.getElementById("videoElement");
+      const captureButton = document.getElementById("captureButton");
+      const photoList = document.getElementById("photoList");
+      const remainingCountElement = document.getElementById("remainingCount");
+      const photoArr = [];
+      let remainingCount = 8;
+
+      function updateRemainingCount() {
+        remainingCount--;
+        remainingCountElement.innerHTML = `남은 사진 촬영 횟수: ${remainingCount}회`;
+        if (remainingCount === 0) {
+          captureButton.disabled = true;
+        }
+      }
+
+      // OpenCV.js 로드 후 실행될 함수
+      function onOpenCvReady() {
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then((stream) => {
+            videoElement.srcObject = stream;
+            videoElement.play();
+          })
+          .catch((error) => {
+            console.error("Error accessing webcam:", error);
+          });
+
+        captureButton.addEventListener("click", () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = videoElement.width;
+          canvas.height = videoElement.height;
+          const context = canvas.getContext("2d");
+          context.scale(-1, 1); // 이미지 좌우 반전 처리
+          context.drawImage(
+            videoElement,
+            -canvas.width,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+          const link = document.createElement("a");
+          link.href = canvas.toDataURL();
+          link.download = "captured_image.png";
+          link.click();
+
+          // 촬영한 이미지를 배열에 추가
+          photoArr.push(canvas.toDataURL());
+
+          // 이미지를 목록에 표시
+          const listItem = document.createElement("li");
+          const image = document.createElement("img");
+          image.src = canvas.toDataURL();
+          listItem.appendChild(image);
+          photoList.appendChild(listItem);
+
+          updateRemainingCount();
+        });
+      }
+    </script>
+  </body>
+</html>
