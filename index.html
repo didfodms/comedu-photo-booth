@@ -128,7 +128,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 80%;
+        width: 90%;
       }
       #photoList {
         /* border: solid salmon 2px; */
@@ -164,7 +164,7 @@
         width: 300px;
         height: 900px;
       }
-      #frame-img {
+      .frame-img {
         width: 100%;
         height: 100%;
       }
@@ -257,28 +257,39 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        width: 50%;
+        width: 80%;
       }
 
       #select-frame-section {
-        background-color: white;
-        border-radius: 20px;
-        width: 60vw;
+        background-color: rgb(0, 0, 0);
+        /* border: 6px solid rgb(255, 255, 255); */
+        /* border-radius: 20px; */
+        width: 50vw;
         height: 70vh;
         margin-right: 80px;
 
+        place-items : center;
         display: grid;
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-auto-rows: minmax(100px, auto);
         gap: 10px;
       }
 
       .select-frame-item {
-        width: 80px;
-        height: 80px;
-        background-color: blue;
-        border: 2px solid black;
-        border-radius: 40px;
+        width: 100px;
+        height: 100px;
+        background-color: rgb(0, 0, 0);
+        border: 6px solid rgb(255, 255, 255);
+        border-radius: 60px;
+
+        display : flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .select-frame-item-name {
+        font-size : 1.2rem;
+        font-weight : 700;
+        color : white
       }
 
       .visibility-hidden {
@@ -289,6 +300,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      #countdownTimer {
+        position :fixed;
+        top: 5%;
+        transform: translateY(-50%);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+
+        font-size : 6rem;
+        font-weight : 600;
+        color : white;
       }
     </style>
   </head>
@@ -329,7 +353,7 @@
       <!-- 출력될 파일 섹션 -->
       <div id="photo-output-section" class="container center visibility-hidden">
         <!-- 프레임 선택하는 섹션 -->
-        <!-- <div id="select-frame-section" class="container"></div> -->
+        <div id="select-frame-section" class="container"></div>
         <!-- 다운받을 섹션 -->
         <div id="memorism-photo">
           <div class="frame">
@@ -337,14 +361,14 @@
             <div class="frame-hole hole2"></div>
             <div class="frame-hole hole3"></div>
             <div class="frame-hole hole4"></div>
-            <img id="frame-img" src="frame/양래은.png" alt="Frame Image" />
+            <img id="frame-img1" class="frame-img" src="frame/memorism-only-black.png" alt="Frame Image" />
           </div>
           <div class="frame">
             <div class="frame-hole hole1"></div>
             <div class="frame-hole hole2"></div>
             <div class="frame-hole hole3"></div>
             <div class="frame-hole hole4"></div>
-            <img id="frame-img" src="frame/양래은.png" alt="Frame Image" />
+            <img id="frame-img2" class="frame-img" src="frame/memorism-only-black.png" alt="Frame Image" />
           </div>
         </div>
 
@@ -382,16 +406,84 @@
 
       const frameHoles = document.querySelectorAll(".frame-hole");
       const frameArr = [
-        "frame/memorism-white.png",
-        "frame/memorism-computer-education.png",
-        "frame/memorism-chansa-green.png",
-        "frame/memorism-chansa-ivory.png",
+        {
+          imgSrc : "frame/memorism-only-white.png",
+          name : "화이트"
+        },
+        {
+          imgSrc : "frame/memorism-only-black.png",
+          name : "블랙"
+        },
+        {
+          imgSrc : "frame/memorism-only-cyan.png",
+          name : "하늘"
+        },
+        {
+          imgSrc : "frame/memorism-only-magenta.png",
+          name : "마젠타"
+        },
+        {
+          imgSrc : "frame/memorism-only-orange.png",
+          name : "가을"
+        },
+        {
+          imgSrc : "frame/memorism-only-purple.png",
+          name : "연보라"
+        },
+        {
+          imgSrc : "frame/memorism-computer-education.png",
+          name : "컴퓨터"
+        },
+        {
+          imgSrc : "frame/memorism-english-education.png",
+          name : "영어"
+        },
+        {
+          imgSrc : "frame/memorism-ethics-education.png",
+          name : "윤리"
+        },
+        {
+          imgSrc : "frame/memorism-geology-education.png",
+          name : "지리"
+        },
+        {
+          imgSrc : "frame/memorism-korean-education.png",
+          name : "국어"
+        },
+        {
+          imgSrc : "frame/memorism-math-education.png",
+          name : "수학"
+        },
+        {
+          imgSrc : "frame/memorism-physical-education.png",
+          name : "체육"
+        },
+        {
+          imgSrc : "frame/memorism-science-education.png",
+          name : "과학(플)"
+        },
+        {
+          imgSrc : "frame/memorism-science-education2.png",
+          name : "과학(포)"
+        },
+        {
+          imgSrc : "frame/memorism-society-education.png",
+          name : "사회"
+        },
+        {
+          imgSrc : "frame/memorism-chansa-green.png",
+          name : "찬사(녹)"
+        },
+        {
+          imgSrc : "frame/memorism-chansa-ivory.png",
+          name : "찬사(흰)"
+        },
       ];
 
       const photoArr = []; // 촬영한 이미지 배열
       const selectedPhotoArr = []; // 선택된 이미지 배열
 
-      const maxCount = 4; // 최대 촬영 횟수
+      const maxCount = 9; // 최대 촬영 횟수
       let remainingCount = maxCount; // 현재 남은 촬영 횟수
 
       const countdownDuration = 10; // 카운트다운 기간 (초)
@@ -537,6 +629,9 @@
         "select-frame-section"
       );
 
+      const frameImg1 = document.querySelector('#frame-img1');
+      const frameImg2 = document.querySelector('#frame-img2');
+
       // 4장 다 고르면 프레임 고르는 섹션으로 넘어가기
       function choiceFrame() {
         // 화면 전환
@@ -547,6 +642,18 @@
         frameArr.forEach((frame, index) => {
           const divTag = document.createElement("div");
           divTag.classList.add("select-frame-item");
+          divTag.id = `frameImg${index}`;
+          
+          divTag.addEventListener('click', () => {
+            frameImg1.src = frameArr[index].imgSrc;
+            frameImg2.src = frameArr[index].imgSrc;
+          })
+
+          const textTag = document.createElement('div');
+          textTag.classList.add('select-frame-item-name');
+          textTag.innerHTML = frameArr[index].name;
+          divTag.appendChild(textTag);
+
           selectFrameSectionEl.appendChild(divTag);
         });
       }
