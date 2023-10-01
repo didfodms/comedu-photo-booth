@@ -165,11 +165,16 @@
         height: 900px;
       }
       .frame-img {
+        /* position: relative; */
+        z-index: 2;
+
         width: 100%;
         height: 100%;
       }
       .frame-hole {
         position: absolute;
+        z-index : 1;
+
         width: 260px;
         height: 200px;
       }
@@ -279,7 +284,7 @@
         width: 100px;
         height: 100px;
         background-color: rgb(0, 0, 0);
-        border: 6px solid rgb(255, 255, 255);
+        border: 4px solid rgb(255, 255, 255);
         border-radius: 60px;
 
         display : flex;
@@ -407,76 +412,34 @@
       const frameHoles = document.querySelectorAll(".frame-hole");
       const frameArr = [
         {
-          imgSrc : "frame/memorism-only-white.png",
-          name : "화이트"
+          imgSrc : "frame/오륜기(흰).png",
+          logoSrc : "frame/오륜기로고(흰).png",
+          name : "오륜기(흰)"
         },
         {
-          imgSrc : "frame/memorism-only-black.png",
-          name : "블랙"
+          imgSrc : "frame/오륜기(검).png",
+          logoSrc : "frame/오륜기로고(검).png",
+          name : "오륜기(검)"
         },
         {
-          imgSrc : "frame/memorism-only-cyan.png",
-          name : "하늘"
+          imgSrc : "frame/오륜기(황).png",
+          logoSrc : "frame/오륜기로고(황).png",
+          name : "오륜기(황)"
         },
         {
-          imgSrc : "frame/memorism-only-magenta.png",
-          name : "마젠타"
+          imgSrc : "frame/비욘드(흰).png",
+          logoSrc : "frame/비욘드로고(흰).png",
+          name : "비욘드(흰)"
         },
         {
-          imgSrc : "frame/memorism-only-orange.png",
-          name : "가을"
+          imgSrc : "frame/비욘드(검).png",
+          logoSrc : "frame/비욘드로고(검).png",
+          name : "비욘드(검)"
         },
         {
-          imgSrc : "frame/memorism-only-purple.png",
-          name : "연보라"
-        },
-        {
-          imgSrc : "frame/memorism-computer-education.png",
-          name : "컴퓨터"
-        },
-        {
-          imgSrc : "frame/memorism-english-education.png",
-          name : "영어"
-        },
-        {
-          imgSrc : "frame/memorism-ethics-education.png",
-          name : "윤리"
-        },
-        {
-          imgSrc : "frame/memorism-geology-education.png",
-          name : "지리"
-        },
-        {
-          imgSrc : "frame/memorism-korean-education.png",
-          name : "국어"
-        },
-        {
-          imgSrc : "frame/memorism-math-education.png",
-          name : "수학"
-        },
-        {
-          imgSrc : "frame/memorism-physical-education.png",
-          name : "체육"
-        },
-        {
-          imgSrc : "frame/memorism-science-education.png",
-          name : "과학(플)"
-        },
-        {
-          imgSrc : "frame/memorism-science-education2.png",
-          name : "과학(포)"
-        },
-        {
-          imgSrc : "frame/memorism-society-education.png",
-          name : "사회"
-        },
-        {
-          imgSrc : "frame/memorism-chansa-green.png",
-          name : "찬사(녹)"
-        },
-        {
-          imgSrc : "frame/memorism-chansa-ivory.png",
-          name : "찬사(흰)"
+          imgSrc : "frame/비욘드(황).png",
+          logoSrc : "frame/비욘드로고(황).png",
+          name : "비욘드(황)"
         },
       ];
 
@@ -545,6 +508,7 @@
           canvas.height
         );
 
+        // 개별 이미지 다운로드
         // const link = document.createElement("a");
         // link.href = canvas.toDataURL();
         // link.download = "captured_image.png";
@@ -649,10 +613,16 @@
             frameImg2.src = frameArr[index].imgSrc;
           })
 
-          const textTag = document.createElement('div');
-          textTag.classList.add('select-frame-item-name');
-          textTag.innerHTML = frameArr[index].name;
-          divTag.appendChild(textTag);
+          // 로고 src가 없다면
+          if(!frameArr[index].logoSrc) {
+            const textTag = document.createElement('div');
+            textTag.classList.add('select-frame-item-name');
+            textTag.innerHTML = frameArr[index].name;
+            divTag.appendChild(textTag);
+          } else {
+            divTag.style.backgroundImage = `url('${frameArr[index].logoSrc}')`;
+            divTag.style.backgroundSize = 'contain';
+          }
 
           selectFrameSectionEl.appendChild(divTag);
         });
@@ -685,7 +655,7 @@
               }
             } else {
               if (selectedPhotoArr.length >= 4) {
-                return; // 최대 4개의 사진을 선택했다면 더이상 선택 못함
+                return; // 최대 4개의 사진을 선택했다면 더이상 선택하지 못함
               }
               photoItem.classList.add("selected");
               const imgSrc = photoItem.querySelector("img").src;
@@ -701,14 +671,14 @@
 
       // 완성된 사진 다운로드
       function downloadImage() {
-        // HTML 요소를 캡처하여 캔버스에 그립니다.
+        // HTML 요소를 캡처하여 캔버스에 그림
         const element = document.getElementById("memorism-photo");
         html2canvas(element, { scale: 2 }).then(function (canvas) {
           // 캔버스를 이미지 데이터 URL로 변환합니다.
           const image = canvas.toDataURL("image/png");
 
-          // 가상 링크를 생성하여 이미지 다운로드를 트리거합니다.
-          var link = document.createElement("a");
+          // 가상 링크를 생성하여 이미지 다운로드를 트리거
+          const link = document.createElement("a");
           link.href = image;
           link.download = "memorism.png";
           link.click();
