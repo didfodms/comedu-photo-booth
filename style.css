@@ -1,0 +1,297 @@
+body {
+    background-color: black;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  .center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #videoElement {
+    width: 800px;
+    height: 600px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleX(-1);
+  }
+
+  #title {
+    color: white;
+    font-family: "DM Serif Display", serif;
+    text-shadow: 1px 1px 0px rgba(220, 220, 220, 0.5);
+    letter-spacing: 4px;
+
+    position: fixed;
+    top: 20px;
+    left: 100px;
+  }
+
+  #captureButton {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% - 40px);
+    z-index: 999;
+  }
+  #captureButton:before {
+    content: "";
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  #captureButton:active:before {
+    background-color: #ddd;
+  }
+  #captureButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  #photoList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  #photoList > li {
+    padding: 10px;
+    text-align: center;
+  }
+  #selectPhotoList {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+  }
+  #selectPhotoList > li {
+    padding: 10px;
+    text-align: center;
+  }
+
+  #remainingCount {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    color: white;
+  }
+
+  #countdownTimer {
+    color: white;
+  }
+
+  #photo-choice-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+  }
+  #photoList {
+    /* border: solid salmon 2px; */
+    width: 840px;
+  }
+  #photoList > li {
+    /* border: solid white 2px; */
+    width: 240px;
+    height: 180px;
+  }
+  #photoList > li.selected {
+    box-shadow: 0 0 0 3px rgb(255, 255, 255) inset;
+  }
+  #selectPhotoList {
+    /* border: solid salmon 2px; */
+    width: 260px;
+    height: 800px;
+  }
+  #selectPhotoList > li {
+    /* border: solid white 2px; */
+    width: 260px;
+    height: 196px;
+  }
+  #selectPhotoList > li > img {
+    /* border: solid white 2px; */
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame {
+    position: relative;
+
+    width: 300px;
+    height: 900px;
+  }
+  .frame-img {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+  }
+  .frame-hole {
+    position: absolute;
+    z-index : 1;
+
+    width: 260px;
+    height: 200px;
+  }
+  .selected-image {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .hole1 {
+    top: 65px;
+    left: 20px;
+  }
+  .hole2 {
+    top: 270px;
+    left: 20px;
+  }
+  .hole3 {
+    top: 475px;
+    left: 20px;
+  }
+  .hole4 {
+    top: 680px;
+    left: 20px;
+  }
+
+  #description-section {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .desc {
+    color: white;
+  }
+  #startIcon {
+    width: 50%;
+    height: 80%;
+  }
+  #startButton {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 500px;
+    height: 300px;
+
+    background-color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 8px solid black;
+    border-radius: 60px;
+  }
+  #startButton:hover {
+    transition: 0.3s ease;
+    filter: invert(100%);
+  }
+
+  .check-btn {
+    width: 200px;
+    height: 200px;
+
+    background-color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 8px solid black;
+    border-radius: 200px;
+  }
+  .check-btn:hover {
+    transition: 0.3s ease;
+    filter: invert(100%);
+  }
+  .check-btn > img {
+    width: 80%;
+    height: 80%;
+  }
+
+  #photo-output-section {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+  }
+
+  #select-frame-section {
+    background-color: rgb(0, 0, 0);
+    /* border: 6px solid rgb(255, 255, 255); */
+    /* border-radius: 20px; */
+    width: 50vw;
+    height: 70vh;
+    margin-right: 5rem;
+
+    place-items : center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+  }
+
+  .select-frame-item {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 60px;
+
+    display : flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .select-frame-item-name {
+    font-size : 1.2rem;
+    font-weight : 700;
+    color : white
+  }
+
+  .visibility-hidden {
+    visibility: hidden;
+  }
+
+  #memorism-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #countdownTimer {
+    position :fixed;
+    top: 5%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    font-size : 6rem;
+    font-weight : 600;
+    color : white;
+  }
