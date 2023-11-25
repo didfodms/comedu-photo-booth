@@ -26,14 +26,19 @@ const descriptionSectionEl = document.getElementById(
   const frameHoles = document.querySelectorAll(".frame-hole");
   const frameArr = [
     {
-      imgSrc : "frame/사회학과프레임1.png",
-      name : "사계",
-      logoSrc : "frame/사회학과로고1.png"
+      imgSrc : "frame/사과대프레임2.png",
+      name : "열린",
+      logoSrc : "frame/사과대로고2.png"
     },
     {
-      imgSrc : "frame/사회학과프레임2.png",
-      name : "영화",
-      logoSrc : "frame/사회학과로고2.png"
+      imgSrc : "frame/사과대프레임1.png",
+      name : "클스1",
+      logoSrc : "frame/사과대로고1.png"
+    },
+    {
+      imgSrc : "frame/사과대프레임3.png",
+      name : "클스2",
+      logoSrc : "frame/사과대로고3.png"
     },
   ];
 
