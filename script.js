@@ -40,6 +40,11 @@ const descriptionSectionEl = document.getElementById(
       name : "클스2",
       logoSrc : "frame/사과대로고3.png"
     },
+    {
+      imgSrc : "frame/사과대프레임4.png",
+      name : "붕빵",
+      logoSrc : "frame/사과대로고4.png"
+    },
   ];
 
   const photoArr = []; // 촬영한 이미지 배열
