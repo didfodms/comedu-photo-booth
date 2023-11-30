@@ -26,24 +26,19 @@ const descriptionSectionEl = document.getElementById(
   const frameHoles = document.querySelectorAll(".frame-hole");
   const frameArr = [
     {
-      imgSrc : "frame/사과대프레임2.png",
-      name : "열린",
-      logoSrc : "frame/사과대로고2.png"
+      imgSrc : "frame/인대프레임1.png",
+      name : "1",
+      logoSrc : "frame/인대로고1.png"
     },
     {
-      imgSrc : "frame/사과대프레임1.png",
-      name : "클스1",
-      logoSrc : "frame/사과대로고1.png"
+      imgSrc : "frame/인대프레임2.png",
+      name : "2",
+      logoSrc : "frame/인대로고2.png"
     },
     {
-      imgSrc : "frame/사과대프레임3.png",
-      name : "클스2",
-      logoSrc : "frame/사과대로고3.png"
-    },
-    {
-      imgSrc : "frame/사과대프레임4.png",
-      name : "붕빵",
-      logoSrc : "frame/사과대로고4.png"
+      imgSrc : "frame/인대프레임3.png",
+      name : "3",
+      logoSrc : "frame/인대로고3.png"
     },
   ];
 
