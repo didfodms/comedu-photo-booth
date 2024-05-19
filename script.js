@@ -25,27 +25,55 @@ const descriptionSectionEl = document.getElementById(
 
   const frameHoles = document.querySelectorAll(".frame-hole");
   const frameArr = [
+    // {
+    //   imgSrc : "frame/인대프레임1.png",
+    //   name : "1",
+    //   logoSrc : "frame/인대로고1.png"
+    // },
+    // {
+    //   imgSrc : "frame/인대프레임2.png",
+    //   name : "2",
+    //   logoSrc : "frame/인대로고2.png"
+    // },
+    // {
+    //   imgSrc : "frame/인대프레임3.png",
+    //   name : "3",
+    //   logoSrc : "frame/인대로고3.png"
+    // },
+    // {
+    //   imgSrc : "frame/사록픽.png",
+    //   name : "사록픽",
+    // },
     {
-      imgSrc : "frame/인대프레임1.png",
-      name : "1",
-      logoSrc : "frame/인대로고1.png"
+      imgSrc : "frame/조리1반.png",
+      name : "조리1",
     },
     {
-      imgSrc : "frame/인대프레임2.png",
-      name : "2",
-      logoSrc : "frame/인대로고2.png"
+      imgSrc : "frame/조리2반.png",
+      name : "조리2",
     },
     {
-      imgSrc : "frame/인대프레임3.png",
-      name : "3",
-      logoSrc : "frame/인대로고3.png"
+      imgSrc : "frame/그린1반.png",
+      name : "그린1",
+    },
+    {
+      imgSrc : "frame/그린2반.png",
+      name : "그린2",
+    },
+    {
+      imgSrc : "frame/경영1반.png",
+      name : "경영1",
+    },
+    {
+      imgSrc : "frame/경영2반.png",
+      name : "경영2",
     },
   ];
 
   const photoArr = []; // 촬영한 이미지 배열
   const selectedPhotoArr = []; // 선택된 이미지 배열
 
-  const maxCount = 9; // 최대 촬영 횟수
+  const maxCount = 6; // 최대 촬영 횟수
   let remainingCount = maxCount; // 현재 남은 촬영 횟수
 
   const countdownDuration = 10; // 카운트다운 기간 (초)
