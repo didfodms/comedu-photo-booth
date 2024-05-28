@@ -25,48 +25,45 @@ const descriptionSectionEl = document.getElementById(
 
   const frameHoles = document.querySelectorAll(".frame-hole");
   const frameArr = [
-    // {
-    //   imgSrc : "frame/인대프레임1.png",
-    //   name : "1",
-    //   logoSrc : "frame/인대로고1.png"
-    // },
-    // {
-    //   imgSrc : "frame/인대프레임2.png",
-    //   name : "2",
-    //   logoSrc : "frame/인대로고2.png"
-    // },
-    // {
-    //   imgSrc : "frame/인대프레임3.png",
-    //   name : "3",
-    //   logoSrc : "frame/인대로고3.png"
-    // },
-    // {
-    //   imgSrc : "frame/사록픽.png",
-    //   name : "사록픽",
-    // },
     {
-      imgSrc : "frame/조리1반.png",
-      name : "조리1",
+      imgSrc : "frame/사록픽.png",
+      name : "사록픽",
     },
     {
-      imgSrc : "frame/조리2반.png",
-      name : "조리2",
+      imgSrc : "frame/국교프레임.png",
+      name : "국교",
     },
     {
-      imgSrc : "frame/그린1반.png",
-      name : "그린1",
+      imgSrc : "frame/영교프레임.png",
+      name : "영교",
     },
     {
-      imgSrc : "frame/그린2반.png",
-      name : "그린2",
+      imgSrc : "frame/수교프레임.png",
+      name : "수교",
     },
     {
-      imgSrc : "frame/경영1반.png",
-      name : "경영1",
+      imgSrc : "frame/사교프레임.png",
+      name : "사교",
     },
     {
-      imgSrc : "frame/경영2반.png",
-      name : "경영2",
+      imgSrc : "frame/과교프레임.png",
+      name : "과교",
+    },
+    {
+      imgSrc : "frame/지교프레임.png",
+      name : "지교",
+    },
+    {
+      imgSrc : "frame/윤교프레임.png",
+      name : "윤교",
+    },
+    {
+      imgSrc : "frame/컴교프레임.png",
+      name : "컴교",
+    },
+    {
+      imgSrc : "frame/체교프레임.png",
+      name : "체교",
     },
   ];
 
