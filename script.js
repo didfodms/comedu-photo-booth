@@ -30,6 +30,14 @@ const descriptionSectionEl = document.getElementById(
       name : "사록픽",
     },
     {
+      imgSrc : "frame/사록픽2.png",
+      name : "사록픽2",
+    },
+    {
+      imgSrc : "frame/사록픽3.png",
+      name : "사록픽3",
+    },
+    {
       imgSrc : "frame/국교프레임.png",
       name : "국교",
     },
@@ -64,6 +72,10 @@ const descriptionSectionEl = document.getElementById(
     {
       imgSrc : "frame/체교프레임.png",
       name : "체교",
+    },
+    {
+      imgSrc : "frame/24년제여교생쌤과.png",
+      name : "교생",
     },
   ];
 
