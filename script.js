@@ -27,55 +27,77 @@ const descriptionSectionEl = document.getElementById(
   const frameArr = [
     {
       imgSrc : "frame/사록픽.png",
+      logoSrc : "logo/사록픽.png",
       name : "사록픽",
     },
     {
       imgSrc : "frame/사록픽2.png",
+      logoSrc : "logo/사록픽2.png",
       name : "사록픽2",
     },
     {
       imgSrc : "frame/사록픽3.png",
+      logoSrc : "logo/사록픽3.png",
       name : "사록픽3",
     },
     {
       imgSrc : "frame/국교프레임.png",
+      logoSrc : "logo/국교.png",
       name : "국교",
     },
     {
       imgSrc : "frame/영교프레임.png",
+      logoSrc : "logo/영교.png",
       name : "영교",
     },
     {
       imgSrc : "frame/수교프레임.png",
+      logoSrc : "logo/수교.png",
       name : "수교",
     },
     {
       imgSrc : "frame/사교프레임.png",
+      logoSrc : "logo/사교.png",
       name : "사교",
     },
     {
       imgSrc : "frame/과교프레임.png",
+      logoSrc : "logo/과교.png",
       name : "과교",
     },
     {
       imgSrc : "frame/지교프레임.png",
+      logoSrc : "logo/지교.png",
       name : "지교",
     },
     {
       imgSrc : "frame/윤교프레임.png",
+      logoSrc : "logo/윤교.png",
       name : "윤교",
     },
     {
       imgSrc : "frame/컴교프레임.png",
+      logoSrc : "logo/컴교.png",
       name : "컴교",
     },
     {
       imgSrc : "frame/체교프레임.png",
+      logoSrc : "logo/체교.png",
       name : "체교",
     },
     {
+      imgSrc : "frame/순간프레임.png",
+      logoSrc : "logo/순간.png",
+      name : "순간",
+    },
+    {
+      imgSrc : "frame/순간프레임2.png",
+      logoSrc : "logo/순간2.png",
+      name : "순간",
+    },
+    {
       imgSrc : "frame/24년제여교생쌤과.png",
-      name : "교생",
+      name : "",
     },
   ];
 
