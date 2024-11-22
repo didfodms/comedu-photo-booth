@@ -29,7 +29,7 @@ const descriptionSectionEl = document.getElementById(
       imgSrc : "frame/해대프레임.png",
       // logoSrc : "logo/사록픽.png",
       name : "해리포터",
-    // },
+    },
     // {
     //   imgSrc : "frame/사록픽2.png",
     //   logoSrc : "logo/사록픽2.png",
