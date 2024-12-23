@@ -39,6 +39,11 @@ const descriptionSectionEl = document.getElementById(
       imgSrc : "frame/프레임3.png",
       // logoSrc : "logo/사록픽.png",
       name : "3",
+    },
+    {
+      imgSrc : "frame/프레임4.png",
+      // logoSrc : "logo/사록픽.png",
+      name : "4",
     }
   ];
 
