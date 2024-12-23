@@ -26,9 +26,19 @@ const descriptionSectionEl = document.getElementById(
   const frameHoles = document.querySelectorAll(".frame-hole");
   const frameArr = [
     {
-      imgSrc : "frame/해대프레임.png",
+      imgSrc : "frame/프레임1.png",
       // logoSrc : "logo/사록픽.png",
-      name : "해리포터",
+      name : "1",
+    },
+    {
+      imgSrc : "frame/프레임2.png",
+      // logoSrc : "logo/사록픽.png",
+      name : "2",
+    },
+    {
+      imgSrc : "frame/프레임3.png",
+      // logoSrc : "logo/사록픽.png",
+      name : "3",
     }
   ];
 
@@ -38,7 +48,7 @@ const descriptionSectionEl = document.getElementById(
   const maxCount = 6; // 최대 촬영 횟수
   let remainingCount = maxCount; // 현재 남은 촬영 횟수
 
-  const countdownDuration = 10; // 카운트다운 기간 (초)
+  const countdownDuration = 6; // 카운트다운 기간 (초)
   let countdownIntervalId; // 카운트다운 인터벌 ID
   let countdownTime = countdownDuration; // 현재 카운트다운 시간
 
